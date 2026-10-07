@@ -1,9 +1,8 @@
 package com.ryan.micro.demo;
 
-import com.baomidou.mybatisplus.core.toolkit.Wrappers;
-import com.ryan.micro.demo.mapper.UserMapper;
 import com.ryan.micro.demo.model.User;
 import com.ryan.micro.demo.service.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,6 +12,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 @SpringBootApplication
+@Slf4j
 public class DemoServiceApplication {
 
     public static void main(String[] args) {
@@ -20,10 +20,11 @@ public class DemoServiceApplication {
     }
 
     @Bean
-    CommandLineRunner commandLineRunner(UserMapper userMapper) {
+    CommandLineRunner commandLineRunner(UserService userService) {
         return args -> {
-            List<User> users = userMapper.selectList(Wrappers.query());
+            List<User> users = userService.list();
             System.out.println("users = " + users);
+            log.info("users: {}", users);
             try {
                 TimeUnit.SECONDS.sleep(5);
                 System.exit(0);
