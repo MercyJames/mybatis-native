@@ -1,0 +1,26 @@
+server:
+  port: 9000
+spring:
+  application:
+    name: mybatis-native
+mybatis-plus:
+  mapper-locations: classpath:mapper/*Mapper.xml
+  global-config:
+    banner: false
+  configuration:
+    map-underscore-to-camel-case: true
+    use-actual-param-name: true
+    use-column-label: true
+    auto-mapping-behavior: full
+    auto-mapping-unknown-column-behavior: warning
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    cache-enabled: false
+logging:
+  level:
+    root: info
+    sql: trace
+    org.springframework.jdbc: trace
+    com.ryan.micro.demo.mapper: trace
+    org.apache.ibatis: trace
+    org.h2: trace
+    com.zaxxer.hikari.pool: trace
