@@ -62,9 +62,16 @@
                     <mainClass>com.ryan.micro.demo.DemoServiceApplication</mainClass>
                     <debug>false</debug>
                     <verbose>true</verbose>
-
                 </configuration>
-
+                <executions>
+                    <execution>
+                        <id>build-native-image</id>
+                        <goals>
+                            <goal>compile-no-fork</goal>
+                        </goals>
+                        <phase>package</phase>
+                    </execution>
+                </executions>
 
             </plugin>
 
